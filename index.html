@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Well Map - Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: hsla(200, 43%, 99%, 0.945);
+            font-family: Arial, sans-serif;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .navbar {
+            background-color: black;
+        }
+
+        .navbar-brand img {
+            width: 50px;
+            height: 45px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        .nav-link {
+            margin-left: 20px;
+        }
+        .login-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 600px;
+            text-align: center;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        table {
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        td {
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: #007BFF;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            text-align: left;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border: 1px solid #007BFF;
+        }
+
+        .login-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .signup-link {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        div {
+            text-align: center;
+        }
+        
+        a.btn {
+            border: none;
+            margin: 0 4%;
+            font-size: 90%;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        .review-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .review {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .review:hover {
+            transform: scale(1.05);
+        }
+
+        .quote {
+            font-style: italic;
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .author {
+            font-weight: bold;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .date {
+            color: #777;
+            font-size: 14px;
+        }
+        .review-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .review {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            width: 60%;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #review-text {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #submit-review {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #submit-review:hover {
+            background-color: #45a049;
+        }
+
+        #leave-review-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        #leave-review-button:hover {
+            background-color: #45a049;
+        }      
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="background-color: black;">
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="logo">
+                Mental Well Map
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="index.html" style="margin-left: auto;">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="mental.html">Mental Health Hub</a></li>
+                <li class="nav-item"><a class="nav-link active" href="user.html">User Profile</a></li>
+                <li class="nav-item"><a class="nav-link active" href="subscribtion.html">Subscription Plans</a></li>
+                <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="aboutus.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </div>
+    <img src="mental_health.jpg" alt="Mental Health" heaight="1%" width="100%">
+    <div style="text-align: justify; max-width: 800px; margin: 0 auto;">
+      <br>
+      <br>
+
+      <h2 style="color: black; text-align: center; font-weight: bolder;">Guiding Youth to Mental Well-Being
+    </h2>
+    <h4 style="text-align: center; color: green;">100% online.
+    </h4>
+  </div>
+    </div>
+    <br>
+    <br>
+    <div style="background-color: rgb(43, 1, 46); text-align: center; padding: 20px; margin: 0 auto; height: 250px; display: flex; flex-direction: column; justify-content: center;">
+
+      <h1 style="margin-top: 30px; color: white; font-weight: bold;">Our Mission</h1>
+  
+      <div style="max-width: 800px; text-align: center; margin: 0 auto;">
+          <p style="text-align: justify; color: white; max-width: 100%;">
+            Our mission is to provide comprehensive mental health support for youth by reducing stigma, offering resources, building a supportive community, and delivering a user-centric experience. It aims to empower users, ensure inclusivity, and provide immediate assistance to enhance well-being and reduce isolation.          </p>
+      </div>
+  
+  </div>
+
+
+  <br>
+  <br>
+  <div >
+    <img src="mapMent.png" style="text-align: center; height: 600px;">
+    <h3 style="color:green; font-style: oblique ; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Mapping Minds, Shaping Lives</h3>
+
+  </div>
+  <hr>
+  
+  
+  
+
+  <div style="text-align: justify; max-width: 800px; margin: 0 auto;">
+    <br>
+    <br>
+
+    <h2 style="color: purple; text-align: center; font-weight: bolder;">What we've done
+    </h2>
+    <br>
+    <br>
+
+    <p style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+        At Mental Well Map, we've accomplished several significant milestones in our mission to support the mental well-being of youth. These achievements include establishing a comprehensive directory of mental health professionals and services, nurturing a supportive online community, expanding our library of educational content, connecting users with therapist consulting sessions, and offering flexible subscription plans.   
+     </p>
+     <br>
+     <p style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+        Our efforts have contributed to reducing the stigma around mental health issues and fostering a more understanding and compassionate society. We've also prioritized inclusivity and accessibility, ensuring that our platform is open to individuals with diverse needs and backgrounds. Our multiple contact options provide immediate assistance, and we've maintained transparency through essential policies and comprehensive resources.     </p>
+<br>
+<p style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
+    As we move forward, we remain committed to enhancing and expanding our services to make a positive impact on the lives of young individuals seeking mental health support. Thank you for being a part of our journey. </p>
+</div>
+<div style="background-color: rgb(43, 1, 46); text-align: center; padding: 20px; margin: 0 auto; height: 100px; display: flex; flex-direction: column; justify-content: center; margin-top: 100px;">
+
+      <h1 style="margin-top: 30px; color: white; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bold;"> Reviews
+      </h1>
+</div>
+
+<div class="review-container">
+    <div class="review">
+        <p class="quote">"Exceptional service! The team is incredibly supportive."</p>
+        <p class="author">- John Doe</p>
+        <p class="date">Posted on July 15, 2023</p>
+    </div>
+
+    <div class="review">
+        <p class="quote">"Mental Well Map has been a lifeline for me. I can't thank them enough."</p>
+        <p class="author">- Jane Smith</p>
+        <p class="date">Posted on July 12, 2023</p>
+    </div>
+    <div class="review">
+        <p class="quote">"Mental Well Map is a game-changer in the world of mental health support. I've found solace and strength in their resources."</p>
+        <p class="author">- Sarah Johnson</p>
+        <p class="date">Posted on July 10, 2023</p>
+    </div>
+    
+    <div class="review">
+        <p class="quote">"The personalized recommendations I received from Mental Well Map made a significant difference in my journey to better mental health."</p>
+        <p class="author">- Michael Davis</p>
+        <p class="date">Posted on July 8, 2023</p>
+    </div>
+    
+    <div class="review">
+        <p class="quote">"I can't express how grateful I am for the support I've found here. Mental Well Map truly cares about the well-being of young individuals."</p>
+        <p class="author">- Emily Lewis</p>
+        <p class="date">Posted on July 5, 2023</p>
+    </div>        
+</div>
+
+<div style="text-align: center; margin-top: 30px;">
+    <button id="leave-review-button">Leave a Review</button>
+</div>
+
+
+    <br><br>
+    <div style="background-color: black; " >
+        <br><br>
+        <a href="signup.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Get Started</a>
+        <a href="index.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Home</a>
+        <a href="mental.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Educational Content</a>
+        <a href="subscribtion.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Subscription Plans</a>
+        <br><br><br>
+        <a href="contactus.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Contact Us</a>
+        <a href="aboutus.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">About Us</a>
+        <a href="aboutus.html#terms" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Terms And Conditions</a>
+        <a href="aboutus.html#privacy" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Privacy Policy</a>
+        <br><br>
+      </div>       
+</body>
+</html>

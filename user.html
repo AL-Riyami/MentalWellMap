@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Well Map - Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: black;
+        }
+
+        .navbar-brand img {
+            width: 50px;
+            height: 45px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        .nav-link {
+            margin-left: 20px;
+        }
+        
+
+        div {
+            text-align: center;
+        }
+        
+        a.btn {
+            border: none;
+            margin: 0 4%;
+            font-size: 90%;
+        }
+        
+
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 28px;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .profile {
+            width: 600px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile h1 {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .profile h2 {
+            font-size: 20px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .profile p {
+            color: #777;
+            margin: 10px 0;
+        }
+
+        .profile .section {
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+
+        .profile .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .profile .actions button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="background-color: black;">
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="logo">
+                Mental Well Map
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="index.html" style="margin-left: auto;">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="mental.html">Mental Health Hub</a></li>
+                <li class="nav-item"><a class="nav-link active" href="user.html">User Profile</a></li>
+                <li class="nav-item"><a class="nav-link active" href="subscribtion.html">Subscription Plans</a></li>
+                <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="aboutus.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div style="background-color: rgb(43, 1, 46); color: #f8f9fa; text-align: center;">
+        <br><br>
+        <br>
+        <h1 style="font-size: 500%;">User Profile</h1>
+        <br><br><br>
+    </div>
+        <div class="profile-container">
+        <div class="profile">
+            <img src="MESSI.jpg" alt="Profile Picture">
+            <h1>Lionel Messi</h1>
+            <h2>Patient</h2>
+            <p>Email: messi@example.com</p>
+            <p>Age: 36</p>
+            <p>Gender: Male</p>
+            <p>Phone: (123) 456-7890</p>
+            <div class="section">
+                <h2>Subscription</h2>
+                <p>Subscription Type: Premium</p>
+                <p>Privacy Settings: Public</p>
+            </div>
+            <div class="section">
+                <h2>Community and Chat</h2>
+                <p>Private Messages: 5</p>
+            </div>
+            <div class="section">
+                <h2>Bookmarked</h2>
+                <p>Saved Articles: 3</p>
+                <p>Saved Videos: 2</p>
+            </div>COMP3700/HW2/profile.jpg
+            <div class="actions">
+                <button>Edit Profile</button>
+                <button>Change Password</button>
+            </div>
+        </div>
+    </div>
+
+    <div style="background-color: black;">
+        <br><br>
+        <a href="signup.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Get Started</a>
+        <a href="index.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Home</a>
+        <a href="mental.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Educational Content</a>
+        <a href="subscribtion.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Subscription Plans</a>
+        <br><br><br>
+        <a href="contactus.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Contact Us</a>
+        <a href="aboutus.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">About Us</a>
+        <a href="aboutus#terms" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Terms And Conditions</a>
+        <a href="aboutus#privacy" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Privacy Policy</a>
+        <br><br>
+      </div>      
+</body>
+</html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Well Map - Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: black;
+        }
+
+        .navbar-brand img {
+            width: 50px;
+            height: 45px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav {
+            margin-left: auto;
+        }
+
+        .nav-link {
+            margin-left: 20px;
+        }
+        
+        div {
+            text-align: center;
+        }
+        
+        header {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 28px;
+        }
+
+        .signup-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+            width: 600px;
+            text-align: center;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        table {
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        td {
+            text-align: center;
+        }
+
+        .signup-container h2 {
+            color: #007BFF;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            text-align: left;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border: 1px solid #007BFF;
+        }
+
+        .signup-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .signup-link {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        div {
+            text-align: center;
+        }
+        
+        a.btn {
+            border: none;
+            margin: 0 4%;
+            font-size: 90%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid" style="background-color: black;">
+        <nav class="navbar navbar-expand-sm navbar-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo.png" alt="logo">
+                Mental Well Map
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link active" href="index.html" style="margin-left: auto;">Home</a></li>
+                <li class="nav-item"><a class="nav-link active" href="mental.html">Mental Health Hub</a></li>
+                <li class="nav-item"><a class="nav-link active" href="user.html">User Profile</a></li>
+                <li class="nav-item"><a class="nav-link active" href="subscribtion.html">Subscription Plans</a></li>
+                <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="aboutus.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div style="background-color: rgb(43, 1, 46); color: #f8f9fa; text-align: center;">
+        <br><br>
+        <br>
+        <h1 style="font-size: 500%;">Sign Up</h1>
+        <br><br><br>
+    </div>
+
+    <br><br>
+    <table>
+        <tr>
+            <td>
+            <div class="signup-container">
+                <h2>Sign Up</h2>
+                <form id="signup-form">
+                    <div class="form-group">
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <input type="text" id="username" name="fname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" id="username" name="lname" required>
+                        </div>
+                        <label for="email">Email</label>
+                        <input type="text" id="username" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Enter your password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="spassword">Enter your password again</label>
+                        <input type="password" id="password" name="spassword" required>
+                        <p class="error-message" id="error-message"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">Phone Number</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <button class="signup-button" type="submit">Sign Up</button>
+                </form>
+                <p>Do you have an account? <a class="signup-link" href="login.html">Login</a></p>
+            </div></td>
+            <td><img src="logo2.png" alt="login"></td>
+        </tr>
+    </table>
+
+    <br><br>
+    <div style="background-color: black;">
+        <br><br>
+        <a href="signup.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Get Started</a>
+        <a href="index.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Home</a>
+        <a href="mental.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Educational Content</a>
+        <a href="subscribtion.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Subscription Plans</a>
+        <br><br><br>
+        <a href="contactus.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Contact Us</a>
+        <a href="aboutus.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">About Us</a>
+        <a href="aboutus.html#terms" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Terms And Conditions</a>
+        <a href="aboutus.html#privacy" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Privacy Policy</a>
+        <br><br>
+      </div>
+      
+</body>
+</html>
