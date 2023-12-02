@@ -20,11 +20,14 @@
                 <li class="nav-item"><a class="nav-link active" href="index.html" style="margin-left: auto;">Home</a></li>
                 <li class="nav-item"><a class="nav-link active" href="mental.html">Mental Health Hub</a></li>
                 <li class="nav-item"><a class="nav-link active" href="user.html">User Profile</a></li>
+                <li class="nav-item"><a class="nav-link active" href="fun.html">Fun</a></li>
                 <li class="nav-item"><a class="nav-link active" href="subscribtion.html">Subscription Plans</a></li>
+                <li class="nav-item"><a class="nav-link active" href="calculate.html">Calculate</a></li>
                 <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link active" href="aboutus.html">About Us</a></li>
                 <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link active" href="questionnaire.html">Feedback</a></li>
             </ul>
         </nav>
     </div>
@@ -77,42 +80,42 @@
     <div class="education-section"  id="Education">
         <h2 class="h2" style="color: purple;">Featured Educational Content</h2>
         <div class="education-content">
+            <!-- Table -->
             <div class="row">
-                <div class="article-card col-md-4 mb-3">
-                    <h3>Understanding Stress and Coping Strategies</h3>
-                    <div class="embed-responsive embed-responsive-16by9">
-                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/ntfcfJ28eiU?si=ndLBJ63ZK0h470xj" allowfullscreen></iframe>
-                    </div>
-                    <h5>Objectives:</h5>
-                    <ul>
-                        <li><p>Understanding Stress: Learn the factors and effects of stress on mental and physical well-being.
-                        </p></li>
-                        <li><p>Coping Strategies: Discover effective techniques to manage stress and promote mental resilience.
-                        </p></li>
-                    </ul>
-                    <a href="article1.html" class="btn btn-primary">Read More</a>
+                <table id="conTable"></table>
+            </div>
+
+            <div class="row" style="margin-top: 50px;">
+                <div class="col-6">
+                    <!-- Form to search for information in the Table -->
+                    <form id="searchForm">
+                        <label for="searchTerm">Search Term:</label>
+                        <input type="text" id="searchTerm" class="form-control" required><br>
+                        <button type="button" class="btn btn-primary" onclick="searchInformation()">Search</button>
+                    </form>
                 </div>
-                     <div class="article-card col-md-4 mb-3">
-                        <h3>How to deal with depression</h3>
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/Xu1FMCxoEFc?si=7xYoRznRhy0TcVDO" allowfullscreen></iframe>
-                        </div>
-                        <p>In this full guide, you will learn what is depression, how it affects your mind and the consequences of it in your life, and finally how to manage and cure it.</p>
-                        <a href="article2.html" class="btn btn-primary">Read More</a>
-                    </div>
-    
-                    <div class="article-card col-md-4 mb-3">
-                        <h3>Mental health, and Your life</h3>
-                        <img src="img/articl3-pic.jpg" alt="Article 3 Image" class="article-image">
-                        <p>This article defines mental health, talks about some tools to cure your mind and protect it, and discusses how your mental health affects your life.</p>
-                        <a href="article3.html" class="btn btn-primary">Read More</a>
-                    </div>
-    
+                <div class="col-6">
+                    <!-- Form to add element to array and update Table -->
+                    <!-- Form to add content -->
+                    <form id="addContentForm" style="display: none;">
+                        <h4>Add New Content</h4>
+                        <label for="title">Title:</label>
+                        <input type="text" id="title" class="form-control" required>
+                        <label for="videoSrc">Video Source:</label>
+                        <input type="text" id="videoSrc" class="form-control">
+                        <label for="readMoreLink">Read More Link:</label>
+                        <input type="text" id="readMoreLink" class="form-control">
+                        <label for="imageSrc">Image Source:</label>
+                        <input type="text" id="imageSrc" class="form-control">
+                        <label for="description">Description:</label>
+                        <textarea id="description" class="form-control"></textarea>
+                        <button type="button" class="btn btn-success" onclick="addElementFromForm()">Add Content</button>
+                    </form>
+                    <button type="button" class="btn btn-primary" style="margin-top: 25px;" onclick="toggleAddContentForm()">Create New Content</button>
                 </div>
-    
-                <a href="full-library.html" class="btn btn-secondary library-button">View Full Library</a>
             </div>
         </div>
+    </div>
 
     <div class="container-fluid whatsapp-section"  id="Chat">
         <h2 class="h2"style="color: whitesmoke;">Chat with a Professional</h2>
@@ -141,5 +144,141 @@
         <br><br>
       </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        //content array
+        function Content(title, videoSrc, readMoreLink, imageSrc, description) {
+            this.title = title;
+            this.videoSrc = videoSrc;
+            this.readMoreLink = readMoreLink;
+            this.imageSrc = imageSrc;
+            this.description = description;
+        }
+
+        var contentArray = [
+            new Content(
+                "Understanding Stress and Coping Strategies",
+                "https://www.youtube.com/embed/ntfcfJ28eiU?si=ndLBJ63ZK0h470xj",
+                "article1.html",
+                null,
+                "Understanding Stress: Learn the factors and effects of stress on mental and physical well-being. Coping Strategies: Discover effective techniques to manage stress and promote mental resilience."
+                
+            ),
+            new Content(
+                "How to deal with depression",
+                "https://www.youtube.com/embed/Xu1FMCxoEFc?si=7xYoRznRhy0TcVDO",
+                "article2.html",
+                null,
+                "In this full guide, you will learn what is depression, how it affects your mind and the consequences of it in your life, and finally how to manage and cure it."
+            ),
+            new Content(
+                "Mental health, and Your life",
+                null,
+                "article3.html",
+                "img/articl3-pic.jpg",
+                "This article defines mental health, talks about some tools to cure your mind and protect it, and discusses how your mental health affects your life."
+            )
+        ];
+
+        // Function to toggle the visibility of the addContentForm
+        function toggleAddContentForm() {
+            var addContentForm = document.getElementById("addContentForm");
+            if(addContentForm.style.display == 'block'){
+                addContentForm.style.display = 'none';
+            }
+            else{
+                addContentForm.style.display = 'block'
+            }
+            //addContentForm.style.display = (addContentForm.style.display === 'block') ? 'block' : 'none';
+        }
+
+        // Function to add an element to the array and update the Table from the form
+        function addElementFromForm() {
+            var title = document.getElementById("title").value;
+            var videoSrc = document.getElementById("videoSrc").value;
+            var readMoreLink = document.getElementById("readMoreLink").value;
+            var imageSrc = document.getElementById("imageSrc").value;
+            var description = document.getElementById("description").value;
+
+            contentArray.push(new Content(title, videoSrc,  readMoreLink, imageSrc, description));
+            displayTable();
+
+            // Hide the addContentForm after adding an element
+            document.getElementById("addContentForm").style.display = 'none';
+        }
+
+        // Function to search for information in the array
+        function searchInformation() {
+            var searchTerm = document.getElementById("searchTerm").value.toLowerCase();
+            var t1 = document.getElementById("conTable");
+
+            contentArray.forEach(function (content, index) {
+                console.log("searching...");
+                var title = content.title.toLowerCase();
+                var description = content.description ? content.description.toLowerCase() : "";
+
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    // Found a match, highlight the title
+                    console.log("Itme found at ", index);
+                    var cells = t1.getElementsByTagName("h3");
+                    cells[index].classList.add("highlight");
+                } else {
+                    // No match, remove highlight if previously highlighted
+                    var cells = t1.getElementsByTagName("h3");
+                    cells[index].classList.remove("highlight");
+                }
+            });
+        }
+
+
+        // Function to dynamically generate HTML for a  cell in the  table, integerated with some Bootstrap
+        function createGridColumn(content) {
+            var col = document.createElement("td");
+            col.className = "col-md-4";
+            var card = document.createElement("div");
+            card.className = "article-card";
+            
+            card.innerHTML = '<h3>' + content.title + '</h3>';
+            if (content.videoSrc) {
+                card.innerHTML += '<div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" src="' + content.videoSrc + '" allowfullscreen></iframe></div>';
+            } else {
+                card.innerHTML += '<img src="' + content.imageSrc + '" alt="' + content.title + '" class="article-image">';
+            }
+            card.innerHTML +=  "<br/>"+content.description;
+            card.innerHTML +=  "<br/>"+'<a href="' + content.readMoreLink + '" class="btn btn-primary">Read More</a>';
+
+            col.appendChild(card);
+            return col;
+        }
+
+        // Function to Display tht table, by creating new table body, then add the rows and columns in it.
+        function displayTable() {
+            var rows = Math.ceil(contentArray.length / 3);
+            var t1 = document.getElementById("conTable");
+            
+            // Clear existing content
+            t1.innerHTML = '';
+
+            // Create a tbody element
+            var tbody = document.createElement("tbody");
+
+            for (var r = 0; r < rows; r++) {
+                var tr = tbody.insertRow(r);
+                for (var c = 0; c < 3; c++) {
+                    var index = r * 3 + c;
+                    if (index < contentArray.length) {
+                        var cell = tr.insertCell(c);
+                        cell.appendChild(createGridColumn(contentArray[index]));
+                    }
+                }
+            }
+
+            // Append the tbody to the table
+            t1.appendChild(tbody);
+        }
+
+        // Call the displayTable function after adding an element for initial rendering
+        displayTable();
+
+    </script>  
 </body>
 </html>

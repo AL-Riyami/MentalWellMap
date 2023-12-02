@@ -130,8 +130,8 @@
                 <p>Saved Videos: 2</p>
             </div>
             <div class="actions">
-                <button>Edit Profile</button>
-                <button>Change Password</button>
+               <a href="Edit.html" ><button >Edit Profile</button></a>
+                <button onclick="changePassword()">Change Password</button>
             </div>
         </div>
     </div>
@@ -149,5 +149,42 @@
         <a href="aboutus#privacy" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Privacy Policy</a>
         <br><br>
       </div>      
-</body>
+      <script>
+        function changePassword() {
+            // Prompt the user for the old password
+            var oldPassword = prompt('Enter your old password:');
+
+            // Prompt the user for the new password
+            var newPassword = prompt('Enter your new password:');
+
+            // Replace this with the actual code for changing the password
+            if (oldPassword !== null && newPassword !== null) {
+                alert('Password changed successfully!');
+            } else {
+                alert('Password change cancelled.');
+            }
+        }
+      
+        // Retrieve edited values from localStorage
+        var editedEmail = localStorage.getItem("editedEmail");
+        var editedAge = localStorage.getItem("editedAge");
+        var editedNumber = localStorage.getItem("editedNumber");
+
+        // Update the profile information if values are present
+        if (editedEmail) {
+            document.getElementById("Email").innerHTML = "Email: " + editedEmail;
+        }
+        if (editedAge) {
+            document.getElementById("age").innerHTML = "Age: " + editedAge;
+        }
+        if (editedNumber) {
+            document.getElementById("number").innerHTML = "Phone: " + editedNumber;
+        }
+
+        // Clear localStorage after updating the profile
+        localStorage.removeItem("editedEmail");
+        localStorage.removeItem("editedAge");
+        localStorage.removeItem("editedNumber");
+
+    </script></body>
 </html>

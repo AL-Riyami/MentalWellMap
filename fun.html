@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fun - Mental Well Map</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="icon" href="img/logo2.png">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            padding: 20px 0;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 36px;
+        }
+        p {
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        #puzzle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .word-box {
+            background-color: #fff;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-radius: 5px;
+        }
+        #check-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+        #check-button:hover {
+            background-color: #0056b3;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .hint {
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        #progress-bar {
+            width: 80%;
+            background-color: lightgray;
+            border-radius: 5px;
+            margin: 20px auto;
+            height: 20px;
+            position: relative;
+        }
+
+        #progress {
+            background-color: #007bff;
+            border-radius: 5px;
+            height: 100%;
+            width: 0;
+            transition: width 0.5s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0; 
+        }
+
+        #points {
+            font-size: 24px;
+            margin-top: 10px;
+        }
+
+        #fun-message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #start-again {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        #start-again:hover {
+            background-color: #218838;
+        }
+
+        #restart-button {
+            display: none;
+        }
+    </style>
+</head>
+<div class="container-fluid" style="background-color: black;">
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <a class="navbar-brand" href="index.html">
+            <img src="img/logo.png" alt="logo">
+            Mental Well Map
+        </a>
+        <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link active" href="index.html" style="margin-left: auto;">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="mental.html">Mental Health Hub</a></li>
+            <li class="nav-item"><a class="nav-link active" href="user.html">User Profile</a></li>
+            <li class="nav-item"><a class="nav-link active" href="subscribtion.html">Subscription Plans</a></li>
+            <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact Us</a></li>
+            <li class="nav-item"><a class="nav-link active" href="aboutus.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
+            <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+        </ul>
+    </nav>
+</div>
+<div style="background-color: rgb(43, 1, 46); color: #f8f9fa; text-align: center;">
+    <br><br>
+    <br>
+    <h1 style="font-size: 500%;">Welcome to the Mental Health Word Puzzle!</h1>
+    <br><br><br>
+</div>
+<div class="container">
+    <p>Unscramble the words associated with mental well-being:</p>
+
+    <div id="puzzle-container">
+        <div class="word-box" id="word-box"></div>
+        <button id="check-button">Check</button>
+        <p id="result"></p>
+        <p class="hint" id="hint"></p>
+    </div>
+
+    <button id="change-question">Change Question</button>
+
+    <div id="progress-bar">
+        <div id="progress"></div>
+    </div>
+
+    <h3 id="points">Your Points: 0</h3>
+    <p id="fun-message"></p>
+
+    <button id="restart-button" onclick="restartGame()">Start Again</button>
+</div>
+<br><br>
+<div style="background-color: black;">
+    <br><br>
+    <a href="signup.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Get Started</a>
+    <a href="index.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Home</a>
+    <a href="mental.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Educational Content</a>
+    <a href="subscribtion.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Subscription Plans</a>
+    <br><br><br>
+    <a href="contactus.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Contact Us</a>
+    <a href="aboutus.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">About Us</a>
+    <a href="aboutus.html#terms" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Terms And Conditions</a>
+    <a href="aboutus.html#privacy" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Privacy Policy</a>
+    <br><br>
+  </div>
+  <script>
+    let selectedWord = {};
+    let points = 0;
+
+    const words = [
+            { word: 'empathy', hint: 'Understanding and sharing feelings' },
+            { word: 'resilience', hint: 'Bouncing back from challenges' },
+            { word: 'wellness', hint: 'Overall health and well-being' },
+            { word: 'mindfulness', hint: 'Being present and aware' },
+            { word: 'balance', hint: 'Maintaining stability and harmony' },
+            { word: 'support', hint: 'Help and encouragement' },
+            { word: 'selfcare', hint: 'Taking care of oneself' },
+            { word: 'positivity', hint: 'Focusing on the good' },
+            { word: 'gratitude', hint: 'Being thankful and appreciative' },
+            { word: 'connection', hint: 'Building relationships and bonds' },
+            { word: 'growth', hint: 'Continuous development and progress' },
+            { word: 'mindset', hint: "A person's attitude and way of thinking" },
+            { word: 'acceptance', hint: 'Embracing things as they are' },
+            { word: 'coping', hint: 'Dealing with difficulties or challenges' },
+            { word: 'relaxation', hint: 'Unwinding and reducing stress' },
+            { word: 'awareness', hint: 'Consciousness and perception' },
+            { word: 'compassion', hint: 'Showing care and kindness to others' },
+            { word: 'optimism', hint: 'Having a positive outlook on life' },
+            { word: 'patience', hint: 'Remaining calm during challenges' },
+            { word: 'reflection', hint: 'Thoughtful consideration or contemplation' },
+            { word: 'resilience', hint: 'Bouncing back from difficulties' },
+            { word: 'vulnerability', hint: 'Openness and being genuine' },
+            { word: 'communication', hint: 'Exchange of thoughts and ideas' }
+        ];
+
+        function scrambleWord(word) {
+            return word.split('').sort(() => Math.random() - 0.5).join('');
+        }
+        
+        function displayNewQuestion() {
+            if (words.length === 0) {
+                document.getElementById('restart-button').style.display = 'block';
+                document.getElementById('change-question').style.display = 'none'; // Hide the 'Change Question' button
+                document.getElementById('word-box').textContent = ''; // Clear the word box
+                document.getElementById('result').textContent = ''; // Clear the result display
+                document.getElementById('hint').textContent = ''; // Clear the hint display
+                document.getElementById('check-button').disabled = true; // Disable the check button
+                return;
+            }
+        
+            const randomIndex = Math.floor(Math.random() * words.length);
+            selectedWord = words[randomIndex];
+            const scrambledWord = scrambleWord(selectedWord.word);
+            const wordBox = document.getElementById('word-box');
+            wordBox.textContent = scrambledWord;
+            document.getElementById('result').textContent = '';
+            document.getElementById('hint').textContent = `Hint: ${selectedWord.hint}`;
+        
+            // Remove the word from the array to prevent it from appearing again
+            words.splice(randomIndex, 1);
+        }
+        
+        function checkWord() {
+            const userInput = prompt('Enter the unscrambled word:').toLowerCase();
+            const originalWord = selectedWord.word.toLowerCase();
+            const resultDisplay = document.getElementById('result');
+        
+            if (userInput === originalWord) {
+                resultDisplay.textContent = 'Correct! Well done.';
+                points++; // Increment points if correct
+                document.getElementById('points').textContent = `Your Points: ${points}`;
+        
+                if (points === words.length) {
+                    document.getElementById('fun-message').textContent = 'Congratulations! You completed the puzzle!';
+                    document.getElementById('restart-button').style.display = 'block';
+                } else {
+                    document.getElementById('fun-message').textContent = '';
+                    displayNewQuestion();
+                }
+            } else {
+                resultDisplay.textContent = 'Wrong answer! Try again.';
+            }
+        
+            // Update progress bar status
+            handlePoints();
+
+            if (points === 6) {
+                disableGame();
+            }
+        }
+            
+            
+        
+        const checkButton = document.getElementById('check-button');
+        checkButton.addEventListener('click', checkWord);
+        
+        const changeQuestionButton = document.getElementById('change-question');
+        changeQuestionButton.addEventListener('click', displayNewQuestion);
+        
+        // Initialize the first question on page load
+        displayNewQuestion();
+        
+        function restartGame() {
+            // Reset points to zero
+            points = 0;
+            document.getElementById('points').textContent = `Your Points: ${points}`;
+            document.getElementById('progress').style.width = '0';
+            document.getElementById('fun-message').textContent = '';
+            words.push(
+                { word: 'empathy', hint: 'Understanding and sharing feelings' },
+                { word: 'resilience', hint: 'Bouncing back from challenges' },
+                { word: 'wellness', hint: 'Overall health and well-being' },
+                { word: 'mindfulness', hint: 'Being present and aware' },
+                { word: 'balance', hint: 'Maintaining stability and harmony' },
+                { word: 'support', hint: 'Help and encouragement' },
+                { word: 'selfcare', hint: 'Taking care of oneself' },
+                { word: 'positivity', hint: 'Focusing on the good' },
+                { word: 'gratitude', hint: 'Being thankful and appreciative' },
+                { word: 'connection', hint: 'Building relationships and bonds' },
+                { word: 'growth', hint: 'Continuous development and progress' },
+                { word: 'mindset', hint: "A person's attitude and way of thinking" },
+                { word: 'acceptance', hint: 'Embracing things as they are' },
+                { word: 'coping', hint: 'Dealing with difficulties or challenges' },
+                { word: 'relaxation', hint: 'Unwinding and reducing stress' },
+                { word: 'awareness', hint: 'Consciousness and perception' },
+                { word: 'compassion', hint: 'Showing care and kindness to others' },
+                { word: 'optimism', hint: 'Having a positive outlook on life' },
+                { word: 'patience', hint: 'Remaining calm during challenges' },
+                { word: 'reflection', hint: 'Thoughtful consideration or contemplation' },
+                { word: 'resilience', hint: 'Bouncing back from difficulties' },
+                { word: 'vulnerability', hint: 'Openness and being genuine' },
+                { word: 'communication', hint: 'Exchange of thoughts and ideas' }
+            );
+
+            document.getElementById('restart-button').style.display = 'none';
+
+            // Reset the game to its initial state
+            displayNewQuestion();
+            enableGame();
+    }
+
+    function handlePoints() {
+        const progressBar = document.getElementById('progress');
+        const progressWidth = ((points / 6) * 100);
+        progressBar.style.width = `${progressWidth}%`;
+        document.getElementById('points').textContent = `Your Points: ${points}`;
+        if (points == 6) {
+            document.getElementById('fun-message').textContent = 'Congratulations! You reached 6 points!';
+            document.getElementById('restart-button').style.display = 'block';
+        }
+    }
+
+    function disableGame() {
+        const checkButton = document.getElementById('check-button');
+        const changeQuestionButton = document.getElementById('change-question');
+    
+        // Remove event listeners
+        checkButton.removeEventListener('click', checkWord);
+        changeQuestionButton.removeEventListener('click', displayNewQuestion);
+    
+        // Hide relevant elements or disable interaction
+        checkButton.disabled = true;
+        changeQuestionButton.disabled = true;
+    
+        // You might want to hide or disable other elements as well to indicate the game is complete
+    }
+
+    function enableGame() {
+        const checkButton = document.getElementById('check-button');
+        const changeQuestionButton = document.getElementById('change-question');
+    
+        // Add event listeners back
+        checkButton.addEventListener('click', checkWord);
+        changeQuestionButton.addEventListener('click', displayNewQuestion);
+    
+        // Enable buttons
+        checkButton.disabled = false;
+        changeQuestionButton.disabled = false;
+    
+        // Show or enable other elements as needed
+    }
+    </script>
+  </body>
+</html>

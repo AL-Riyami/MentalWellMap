@@ -136,11 +136,36 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 18px;
+            text-align: center;
+            margin: 20px auto; /* Adjust this margin as needed */
         }
-
+        
         #leave-review-button:hover {
             background-color: #45a049;
-        }      
+        }
+        
+        #banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 18px;
+            display: none;
+            animation: slideBanner 15s linear infinite;
+        }
+
+        @keyframes slideBanner {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        #photo-gallery {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -154,18 +179,20 @@
                 <li class="nav-item"><a class="nav-link active" href="index.html" style="margin-left: auto;">Home</a></li>
                 <li class="nav-item"><a class="nav-link active" href="mental.html">Mental Health Hub</a></li>
                 <li class="nav-item"><a class="nav-link active" href="user.html">User Profile</a></li>
+                <li class="nav-item"><a class="nav-link active" href="fun.html">Fun</a></li>
                 <li class="nav-item"><a class="nav-link active" href="subscribtion.html">Subscription Plans</a></li>
+                <li class="nav-item"><a class="nav-link active" href="calculate.html">Calculate</a></li>
                 <li class="nav-item"><a class="nav-link active" href="contactus.html">Contact Us</a></li>
                 <li class="nav-item"><a class="nav-link active" href="aboutus.html">About Us</a></li>
                 <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link active" href="questionnaire.html">Feedback</a></li>
             </ul>
         </nav>
     </div>
     <img src="img/mental_health.jpg" alt="Mental Health" heaight="1%" width="100%">
     <div style="text-align: justify; max-width: 800px; margin: 0 auto;">
-      <br>
-      <br>
+      <br><br>
 
       <h2 style="color: black; text-align: center; font-weight: bolder;">Guiding Youth to Mental Well-Being
     </h2>
@@ -173,8 +200,7 @@
     </h4>
   </div>
     </div>
-    <br>
-    <br>
+    <br><br>
     <div style="background-color: rgb(43, 1, 46); text-align: center; padding: 20px; margin: 0 auto; height: 250px; display: flex; flex-direction: column; justify-content: center;">
 
       <h1 style="margin-top: 30px; color: white; font-weight: bold;">Our Mission</h1>
@@ -187,26 +213,21 @@
   </div>
 
 
-  <br>
-  <br>
-  <div >
-    <img src="img/mapMent.png" style="text-align: center; height: 600px;">
-    <h3 style="color:green; font-style: oblique ; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Mapping Minds, Shaping Lives</h3>
-
-  </div>
+  <br><br>
+  <div id="photo-gallery" style="width:100%; height:500px; position:relative;"></div>
+  <br><br>
+<h3 style="color:green; font-style: oblique; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; text-align:center;">Mapping Minds, Shaping Lives</h3>
   <hr>
   
   
   
 
   <div style="text-align: justify; max-width: 800px; margin: 0 auto;">
-    <br>
-    <br>
+    <br><br>
 
     <h2 style="color: purple; text-align: center; font-weight: bolder;">What we've done
     </h2>
-    <br>
-    <br>
+    <br><br>
 
     <p style="font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">
         At Mental Well Map, we've accomplished several significant milestones in our mission to support the mental well-being of youth. These achievements include establishing a comprehensive directory of mental health professionals and services, nurturing a supportive online community, expanding our library of educational content, connecting users with therapist consulting sessions, and offering flexible subscription plans.   
@@ -224,44 +245,27 @@
       </h1>
 </div>
 
-<div class="review-container">
-    <div class="review">
-        <p class="quote">"Exceptional service! The team is incredibly supportive."</p>
-        <p class="author">- John Doe</p>
-        <p class="date">Posted on July 15, 2023</p>
-    </div>
-
-    <div class="review">
-        <p class="quote">"Mental Well Map has been a lifeline for me. I can't thank them enough."</p>
-        <p class="author">- Jane Smith</p>
-        <p class="date">Posted on July 12, 2023</p>
-    </div>
-    <div class="review">
-        <p class="quote">"Mental Well Map is a game-changer in the world of mental health support. I've found solace and strength in their resources."</p>
-        <p class="author">- Sarah Johnson</p>
-        <p class="date">Posted on July 10, 2023</p>
-    </div>
-    
-    <div class="review">
-        <p class="quote">"The personalized recommendations I received from Mental Well Map made a significant difference in my journey to better mental health."</p>
-        <p class="author">- Michael Davis</p>
-        <p class="date">Posted on July 8, 2023</p>
-    </div>
-    
-    <div class="review">
-        <p class="quote">"I can't express how grateful I am for the support I've found here. Mental Well Map truly cares about the well-being of young individuals."</p>
-        <p class="author">- Emily Lewis</p>
-        <p class="date">Posted on July 5, 2023</p>
-    </div>        
+<div class="review-container">       
 </div>
 
-<div style="text-align: center; margin-top: 30px;">
+  
+  <div class="review-button-container">
     <button id="leave-review-button">Leave a Review</button>
 </div>
+  
+  <div id="review-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="close-modal">&times;</span>
+      <h3>Leave a Review</h3>
+      <textarea id="review-text" placeholder="Your Review"></textarea>
+      <button id="submit-review">Submit Review</button>
+    </div>
+  </div>
+<div id="banner"></div>
 
 
     <br><br>
-    <div style="background-color: black; " >
+    <div style="background-color: black;">
         <br><br>
         <a href="signup.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Get Started</a>
         <a href="index.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Home</a>
@@ -272,7 +276,161 @@
         <a href="aboutus.html" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">About Us</a>
         <a href="aboutus.html#terms" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Terms And Conditions</a>
         <a href="aboutus.html#privacy" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Privacy Policy</a>
-        <br><br>
-      </div>       
+        <br><br><br><br>
+      </div>
+      <script>
+        // Function to update the banner content and position
+function updateBanner() {
+    var banner = document.getElementById('banner');
+    var currentDate = new Date().toLocaleDateString();
+
+    // Set the welcome message with the current date
+    banner.textContent = `Welcome to the Mental Well Map! Today is ${currentDate}`;
+
+    // Show the banner after some delay
+    banner.style.display = 'block';
+}
+
+// Call the function when the window loads
+window.onload = function() {
+    updateBanner(); // Calls function to update the banner
+    rotateImages(); // Calls function to rotate images
+    displayReviews(); // Calls function to display initial reviews
+};
+
+// Array containing image sources for image rotation
+const imageSources = [
+    'img/mapMent.png',
+    'img/mental3.png',
+    'img/mental1.jpg'
+];
+
+let currentIndex = 0;
+
+// Function to rotate background images in the photo gallery
+function rotateImages() {
+    const gallery = document.getElementById('photo-gallery');
+
+    // Check if the current index exceeds the length of image sources
+    if (currentIndex >= imageSources.length) {
+        currentIndex = 0; // Reset index to prevent going out of bounds
+    }
+
+    // Change background image source
+    gallery.style.backgroundImage = `url('${imageSources[currentIndex]}')`;
+    gallery.style.backgroundSize = 'contain'; // Fits the entire image within the div
+    gallery.style.backgroundPosition = 'center'; // Centers the image
+    gallery.style.backgroundRepeat = "no-repeat"
+
+    // Increment index for the next image
+    currentIndex++;
+
+    // Call the function recursively after 5 seconds
+    setTimeout(rotateImages, 5000);
+}
+
+// Retrieving modal and button elements for reviews functionality
+const modal = document.getElementById("review-modal");
+const openModalButton = document.getElementById("leave-review-button");
+const closeModalButton = document.getElementById("close-modal");
+const submitReviewButton = document.getElementById("submit-review");
+
+// Open the modal when clicking the "Leave a Review" button
+openModalButton.addEventListener("click", function() {
+    modal.style.display = "block";
+});
+
+// Close the modal when clicking the close button
+closeModalButton.addEventListener("click", function() {
+    modal.style.display = "none";
+});
+
+// Array containing initial reviews data
+const reviews = [ 
+{ author: 'John Doe', quote: 'Exceptional service! The team is incredibly supportive.', date: 'July 15, 2023' },
+{ author: 'Jane Smith', quote: 'Mental Well Map has been a lifeline for me. I can\'t thank them enough.', date: 'July 12, 2023' },
+{ author: 'Sarah Johnson', quote: "Mental Well Map is a game-changer in the world of mental health support. I've found solace and strength in their resources.", date:'Posted on July 10, 2023'},
+{ author: 'Michael Davis', quote: "The personalized recommendations I received from Mental Well Map made a significant difference in my journey to better mental health.", date:'Posted on July 8, 2023'},
+{ author: 'Emily Lewis', quote: "I can't express how grateful I am for the support I've found here. Mental Well Map truly cares about the well-being of young individuals.", date:'Posted on July 5, 2023'}
+];
+
+// Function to dynamically display reviews in a table format
+function displayReviews() {
+    const reviewContainer = document.querySelector(".review-container");
+
+    // Clear existing reviews
+    reviewContainer.innerHTML = "";
+
+    // Calculate the number of rows needed based on the review array length
+    const numRows = Math.ceil(reviews.length / 4);
+
+    // Loop to create and populate tables with review data
+    for (let i = 0; i < numRows; i++) {
+        const table = document.createElement("table");
+        table.classList.add("reviews-table");
+
+        const row = document.createElement("tr");
+
+        for (let j = 0; j < 4; j++) {
+            const index = i * 4 + j;
+            if (index < reviews.length) {
+                const review = reviews[index];
+
+                // Creating cells to display review information
+                const cell = document.createElement("td");
+                cell.classList.add("review-cell");
+
+                const newReview = document.createElement("div");
+                newReview.classList.add("review");
+
+                const quote = document.createElement("p");
+                quote.classList.add("quote");
+                quote.textContent = `"${review.quote}"`;
+
+                const author = document.createElement("p");
+                author.classList.add("author");
+                author.textContent = `- ${review.author}`;
+
+                const date = document.createElement("p");
+                date.classList.add("date");
+                date.textContent = `Posted on ${review.date}`;
+
+                newReview.appendChild(quote);
+                newReview.appendChild(author);
+                newReview.appendChild(date);
+
+                cell.appendChild(newReview);
+                row.appendChild(cell);
+            }
+        }
+
+        table.appendChild(row);
+        reviewContainer.appendChild(table);
+    }
+}
+
+// Function to add a new review to the reviews array and update the display
+function addReview(author, quote, date) {
+    const newReview = { author, quote, date };
+    reviews.push(newReview); // Adds the new review object to the reviews array
+    displayReviews(); // Refreshes the display with the updated reviews
+}
+
+// Submit review when clicking the submit button
+submitReviewButton.addEventListener("click", function() {
+    const reviewText = document.getElementById("review-text").value;
+    const authorName = prompt("Please enter your name:");
+
+    if (reviewText && authorName) {
+        const currentDate = new Date().toLocaleDateString();
+        addReview(authorName, reviewText, currentDate); // Adds the submitted review
+        document.getElementById("review-text").value = ""; // Clears the review input field
+        modal.style.display = "none"; // Closes the modal after submitting
+    } else {
+        alert("Please enter both review and name.");
+    }
+});
+
+    </script>   
 </body>
 </html>

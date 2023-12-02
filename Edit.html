@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+eader {
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            font-size: 28px;
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .profile {
+            width: 600px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin: 10px;
+        }
+
+        .profile img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile h1 {
+            font-size: 24px;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .profile h2 {
+            font-size: 20px;
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .profile p {
+            color: #777;
+            margin: 10px 0;
+        }
+
+        .profile .section {
+            border-top: 1px solid #ddd;
+            margin-top: 20px;
+            padding-top: 20px;
+        }
+
+        .profile .actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .profile .actions button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .save-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: rgb(43, 1, 46); color: #f8f9fa; text-align: center;">
+        <br><br>
+        <br>
+        <h1 style="font-size: 500%;">Edit User Profile</h1>
+        <br><br><br>
+    </div>
+    <div class="profile-container">
+        <div class="profile">
+            <img src="img/MESSI.jpg" alt="Profile Picture">
+            <h1>Lionel Messi</h1>
+            <h2>Patient</h2>
+            <p id="Email">Email: messi@example.com</p>
+            <button onclick="EditE()">Edit</button>
+            <p id="age">Age: 36</p>
+            <button onclick="EditA()">Edit</button>
+            <p>Gender: Male</p>
+            <p id="number">Phone: (123) 456-7890</p>
+            <button onclick="EditNumber()">Edit</button>
+            <div class="section">
+                <h2>Subscription</h2>
+                <p>Subscription Type: Premium</p>
+                <p>Privacy Settings: Public</p>
+            </div>
+            <div class="section">
+                <h2>Community and Chat</h2>
+                <p>Private Messages: 5</p>
+            </div>
+            <div class="section">
+                <h2>Bookmarked</h2>
+                <p>Saved Articles: 3</p>
+                <p>Saved Videos: 2</p>
+            </div>
+            <button onclick="goToProfile()" style="float: right;" class="save-button">Save</button>
+        </div>
+    </div>
+
+    <script>
+        function goToProfile() {
+            // Redirect the user to the user profile page
+            window.location.href = "user.html";
+        }
+        function EditE() {
+            var newE = prompt("Enter the new Email:");
+            document.getElementById("Email").innerHTML = "Email: " + newE;
+            // Store the edited email in localStorage
+            localStorage.setItem("editedEmail", newE);
+        }
+
+        function EditA() {
+            var newA = prompt("Enter Your Age:");
+            document.getElementById("age").innerHTML = "Age: " + newA;
+            // Store the edited age in localStorage
+            localStorage.setItem("editedAge", newA);
+        }
+
+        function EditNumber() {
+            var newnum = prompt("Enter Your phone Number:");
+            document.getElementById("number").innerHTML = "Phone: " + newnum;
+            // Store the edited phone number in localStorage
+            localStorage.setItem("editedNumber", newnum);
+        }
+    </script>
+</body>
+</html>

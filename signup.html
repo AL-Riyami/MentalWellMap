@@ -78,19 +78,18 @@
             <td>
             <div class="signup-container">
                 <h2>Sign Up</h2>
-                <form id="signup-form">
+                <form id="signup-form" onsubmit="return validatePasswords()">
                     <div class="form-group">
                         <div class="form-group">
                             <label for="firstname">First Name</label>
-                            <input type="text" id="username" name="fname" required>
+                            <input type="text" id="firstname" name="fname" required>
                         </div>
                         <div class="form-group">
                             <label for="lastname">Last Name</label>
-                            <input type="text" id="username" name="lname" required>
+                            <input type="text" id="lastname" name="lname" required>
                         </div>
                         <label for="email">Email</label>
-                        <input type="text" id="username" name="email" required>
-                    </div>
+                        <input type="text" id="email" name="email" required>
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" id="username" name="username" required>
@@ -101,7 +100,7 @@
                     </div>
                     <div class="form-group">
                         <label for="spassword">Enter your password again</label>
-                        <input type="password" id="password" name="spassword" required>
+                        <input type="password" id="spassword" name="spassword" required>
                         <p class="error-message" id="error-message"></p>
                     </div>
                     <div class="form-group">
@@ -130,6 +129,22 @@
         <a href="aboutus.html#privacy" class="btn btn-outline-light" style="background-color: black; color: white; text-decoration: none;">Privacy Policy</a>
         <br><br>
       </div>
+
+      <script>
+        // Check whether the passwords are the same
+        function validatePasswords() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("spassword").value;
+    
+            if (password !== confirmPassword) {
+                document.getElementById("error-message").innerHTML = "Passwords do not match!";
+                return false; // Prevent form submission
+            } else {
+                document.getElementById("error-message").innerHTML = "";
+                return true; // Allow form submission
+            }
+        }
+    </script>
       
 </body>
 </html>
