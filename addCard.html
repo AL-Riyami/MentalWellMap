@@ -58,51 +58,55 @@
 <a href="subscribtion.html" style="position: absolute;top: 80%; left: 50%; transform: translateX(-30%); width: 80px;" class="btn btn-outline-dark">Back</a>
 
 <script>
+    // Function to format the entered card number by removing non-numeric characters and limiting it to 16 digits
     function formatCardNumber(input) {
         input.value = input.value.replace(/\D/g, '').slice(0, 16);
     }
+    // Function to format the entered CVV by removing non-numeric characters and limiting it to 3 digits
     function formatCvv(input) {
         input.value = input.value.replace(/\D/g, '').slice(0, 3);
     }
-
+    // Function to format the entered expiration date, limit to 4 digits, and add a '/' after the second digit
     function formatExpirationDate(input) {
         input.value = input.value.replace(/\D/g, '').slice(0, 4);
         if (input.value.length >= 2) {
             input.value = input.value.replace(/(\d{2})(\d{0,2})/, '$1/$2');
         }
+        // If the date length reaches 5 (MM/YY), focus on the CVV input field
         if (input.value.length >= 5) {
             document.getElementById('cvv').focus();
         }
     }
-
+    // Function to validate the form before submitting
     function validateForm() {
+        // Retrieve card number and CVV values
         var cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, ''); 
         var cvv = document.getElementById('cvv').value;
-
+        // Check if the card number is a valid length
         if (!isValidCardNumber(cardNumber)) {
             alert('Invalid credit card number');
             return false;
         }
-
+        // Check if the CVV is a valid length
         if (!isValidCVV(cvv)) {
             alert('Invalid CVV');
             return false;
         }
-
-        
+        // Redirect to 'planMsg.html' after successful validation
         window.location.href = 'planMsg.html';
 
-        return false; 
+        return false; // Prevents form submission
     }
-
+    // Function to check if the card number is of valid length (16 digits)
     function isValidCardNumber(cardNumber) {
         return cardNumber.length === 16;
     }
-
+    // Function to check if the CVV is of valid length (3 digits)
     function isValidCVV(cvv) {
         return cvv.length === 3;
     }
 </script>
 
+
 </body>
-</html>ls
+</html>

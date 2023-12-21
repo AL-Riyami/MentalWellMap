@@ -187,6 +187,7 @@
                 <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
                 <li class="nav-item"><a class="nav-link active" href="questionnaire.html">Feedback</a></li>
+                <li class="nav-item"><a class="nav-link active" href="Searching.html">Developers Searching</a></li>
             </ul>
         </nav>
     </div>
@@ -253,14 +254,19 @@
     <button id="leave-review-button">Leave a Review</button>
 </div>
   
-  <div id="review-modal" class="modal">
+<div id="review-modal" class="modal">
     <div class="modal-content">
-      <span class="close" id="close-modal">&times;</span>
-      <h3>Leave a Review</h3>
-      <textarea id="review-text" placeholder="Your Review"></textarea>
-      <button id="submit-review">Submit Review</button>
+        <span class="close" id="close-modal">&times;</span>
+        <h3>Leave a Review</h3>
+        <form id="review-form" action="Review.php" method="GET">
+            <textarea id="review-text" placeholder="Your Review" name="Rev" required></textarea>
+            <input type="text" id="author-name" placeholder="Your Name"  name="AuthorName" required>
+            <input type="date" id="review-date" name="DateD" required>
+            <button id="submit-review">Submit Review</button>
+            <input type="submit" name="submit" value="Submit to DataBase" id="submit-review">
+        </form>
     </div>
-  </div>
+</div>
 <div id="banner"></div>
 
 
@@ -279,7 +285,7 @@
         <br><br><br><br>
       </div>
       <script>
-        // Function to update the banner content and position
+// Function to update the banner content and position
 function updateBanner() {
     var banner = document.getElementById('banner');
     var currentDate = new Date().toLocaleDateString();
@@ -347,11 +353,11 @@ closeModalButton.addEventListener("click", function() {
 
 // Array containing initial reviews data
 const reviews = [ 
-{ author: 'John Doe', quote: 'Exceptional service! The team is incredibly supportive.', date: 'July 15, 2023' },
-{ author: 'Jane Smith', quote: 'Mental Well Map has been a lifeline for me. I can\'t thank them enough.', date: 'July 12, 2023' },
-{ author: 'Sarah Johnson', quote: "Mental Well Map is a game-changer in the world of mental health support. I've found solace and strength in their resources.", date:'Posted on July 10, 2023'},
-{ author: 'Michael Davis', quote: "The personalized recommendations I received from Mental Well Map made a significant difference in my journey to better mental health.", date:'Posted on July 8, 2023'},
-{ author: 'Emily Lewis', quote: "I can't express how grateful I am for the support I've found here. Mental Well Map truly cares about the well-being of young individuals.", date:'Posted on July 5, 2023'}
+    { author: 'John Doe', quote: 'Exceptional service! The team is incredibly supportive.', date: 'July 15, 2023' },
+    { author: 'Jane Smith', quote: 'Mental Well Map has been a lifeline for me. I can\'t thank them enough.', date: 'July 12, 2023' },
+    { author: 'Sarah Johnson', quote: "Mental Well Map is a game-changer in the world of mental health support. I've found solace and strength in their resources.", date: 'July 10, 2023'},
+    { author: 'Michael Davis', quote: "The personalized recommendations I received from Mental Well Map made a significant difference in my journey to better mental health.", date: 'July 8, 2023'},
+    { author: 'Emily Lewis', quote: "I can't express how grateful I am for the support I've found here. Mental Well Map truly cares about the well-being of young individuals.", date: 'July 5, 2023'}
 ];
 
 // Function to dynamically display reviews in a table format
@@ -419,17 +425,20 @@ function addReview(author, quote, date) {
 // Submit review when clicking the submit button
 submitReviewButton.addEventListener("click", function() {
     const reviewText = document.getElementById("review-text").value;
-    const authorName = prompt("Please enter your name:");
+    const authorName = document.getElementById("author-name").value;
+    const currentDate = document.getElementById("review-date").value;
 
     if (reviewText && authorName) {
-        const currentDate = new Date().toLocaleDateString();
         addReview(authorName, reviewText, currentDate); // Adds the submitted review
         document.getElementById("review-text").value = ""; // Clears the review input field
+        document.getElementById("author-name").value = "";
+        document.getElementById("review-date").value = "";
         modal.style.display = "none"; // Closes the modal after submitting
     } else {
         alert("Please enter both review and name.");
     }
 });
+
 
     </script>   
 </body>

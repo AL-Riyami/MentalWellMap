@@ -58,6 +58,7 @@
                 <li class="nav-item"><a class="nav-link active" href="aboutus.html">About Us</a></li>
                 <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link active" href="Searching.html">Developers Searching</a></li>
             </ul>
         </nav>
     </div>
@@ -147,22 +148,18 @@ function validateForm() {
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var feedback = document.getElementById('feedback').value;
-
-
     // Validate Name (Should contain only letters)
     if (!/^[a-zA-Z\s]+$/.test(name)) {
         // If validation fails, show error message
         showError('Name should contain only letters.');
         return; // Stop form submission
     }
-
     // Validate Email (Should be a valid email address)
     if (!/^\S+@\S+\.\S+$/.test(email)) {
         // If validation fails, show error message
         showError('Please enter a valid email address.');
         return; // Stop form submission
     }
-
     var isFeedbackValid = validateFeedbackSection();
     if (!isFeedbackValid) {
         return; // Stop form submission if feedback is invalid
@@ -183,7 +180,6 @@ function validateForm() {
 
         return true; // Return true if validation passes
     }
-
 // Function to display error message
 function showError(message) {
     // Create a div element for error message
@@ -195,7 +191,6 @@ function showError(message) {
     var form = document.getElementById('feedbackForm');
     form.appendChild(errorMessageElement);
 }
-
 // Function to display confirmation message
 function showConfirmation() {
     // Display a simple alert to confirm submission
@@ -204,7 +199,6 @@ function showConfirmation() {
     // Optionally, reset the form after submission
     document.getElementById('feedbackForm').reset();
 }
-
 </script>
 
 

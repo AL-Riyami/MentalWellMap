@@ -80,36 +80,32 @@
     <div class="education-section"  id="Education">
         <h2 class="h2" style="color: purple;">Featured Educational Content</h2>
         <div class="education-content">
-            <!-- Table -->
             <div class="row">
-                <table id="conTable"></table>
+                <table id="conTable"><?php include "mental.php"?></table>
             </div>
 
             <div class="row" style="margin-top: 50px;">
                 <div class="col-6">
-                    <!-- Form to search for information in the Table -->
-                    <form id="searchForm">
+                    <form id="searchForm"  name="search" action="mental.php" method="post">
                         <label for="searchTerm">Search Term:</label>
-                        <input type="text" id="searchTerm" class="form-control" required><br>
-                        <button type="button" class="btn btn-primary" onclick="searchInformation()">Search</button>
+                        <input type="text" name="searchTerm" class="form-control" required><br>
+                        <input type="submit" value="Search" class="btn btn-primary" onclick="deleteinnerHTML()">
                     </form>
                 </div>
                 <div class="col-6">
-                    <!-- Form to add element to array and update Table -->
-                    <!-- Form to add content -->
-                    <form id="addContentForm" style="display: none;">
+                    <form id="addContentForm" name="addArticle" style="display: none;" action="mental.php" method="post">
                         <h4>Add New Content</h4>
                         <label for="title">Title:</label>
-                        <input type="text" id="title" class="form-control" required>
+                        <input type="text" name="title" class="form-control" required>
                         <label for="videoSrc">Video Source:</label>
-                        <input type="text" id="videoSrc" class="form-control">
+                        <input type="text" name="videoSrc" class="form-control">
                         <label for="readMoreLink">Read More Link:</label>
-                        <input type="text" id="readMoreLink" class="form-control">
+                        <input type="text" name="readMoreLink" class="form-control">
                         <label for="imageSrc">Image Source:</label>
-                        <input type="text" id="imageSrc" class="form-control">
+                        <input type="text" name="imageSrc" class="form-control">
                         <label for="description">Description:</label>
-                        <textarea id="description" class="form-control"></textarea>
-                        <button type="button" class="btn btn-success" onclick="addElementFromForm()">Add Content</button>
+                        <textarea name="description" class="form-control"></textarea>
+                        <input type="submit" class="btn btn-success" value="Add Content" onclick="deleteinnerHTML()">
                     </form>
                     <button type="button" class="btn btn-primary" style="margin-top: 25px;" onclick="toggleAddContentForm()">Create New Content</button>
                 </div>
@@ -279,6 +275,11 @@
         // Call the displayTable function after adding an element for initial rendering
         displayTable();
 
+        function deleteinnerHTML(){
+            var tb= document.getElementById("conTable");
+            tb.innerHTML = "";
+        }
     </script>  
+    
 </body>
 </html>

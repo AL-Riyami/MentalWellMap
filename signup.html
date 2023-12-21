@@ -60,6 +60,7 @@
                 <li class="nav-item"><a class="nav-link active" href="aboutus.html">About Us</a></li>
                 <li class="nav-item"><a class="nav-link active" href="login.html">Login</a></li>
                 <li class="nav-item"><a class="nav-link active" href="signup.html">Sign Up</a></li>
+                <li class="nav-item"><a class="nav-link active" href="Searching.html">Developers Searching</a></li>
             </ul>
         </nav>
     </div>
@@ -78,7 +79,7 @@
             <td>
             <div class="signup-container">
                 <h2>Sign Up</h2>
-                <form id="signup-form" onsubmit="return validatePasswords()">
+                <form id="signup-form" onsubmit="return validatePasswords()" action="user.php" method="GET">
                     <div class="form-group">
                         <div class="form-group">
                             <label for="firstname">First Name</label>
@@ -105,7 +106,7 @@
                     </div>
                     <div class="form-group">
                         <label for="username">Phone Number</label>
-                        <input type="text" id="username" name="username" required>
+                        <input type="text" id="phoneNum" name="phoneNum" required>
                     </div>
                     <button class="signup-button" type="submit">Sign Up</button>
                 </form>
